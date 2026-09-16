@@ -1,0 +1,3 @@
+{% macro art(index,size='',extra='') %}<span class="art art-{{ index }} {{ size }} {{ extra }}" aria-hidden="true"></span>{% endmacro %}
+{% macro csrf() %}<input type="hidden" name="csrf_token" value="{{ csrf_token() }}">{% endmacro %}
+{% macro step(number,label) %}<div class="eyebrow">{{ '%02d'|format(number) }} / {{ label }}</div>{% endmacro %}

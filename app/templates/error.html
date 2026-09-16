@@ -1,0 +1,1 @@
+{% extends 'base.html' %}{% from 'macros.html' import art %}{% block content %}<section class="empty-state">{{ art(5,'medium-art') }}<p class="eyebrow">{{ code }}</p><h1>페이지를 다시 확인해주세요.</h1><p>{{ message }}</p><a class="button primary" href="{{ url_for('web.desk') }}">대기실로</a></section>{% endblock %}
