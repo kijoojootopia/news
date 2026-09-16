@@ -13,7 +13,6 @@ from services import generate_newspaper_articles
 # .env 파일에서 환경 변수 로드
 load_dotenv()
 
- c7754a999f505905d98a7cc70c35f95ca23b0da1
 app = Flask(__name__)
 
 app.config['SECRET_KEY'] = 'haru-secret-key-15yr-cto'
