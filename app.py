@@ -5,7 +5,7 @@ from flask import Flask, render_template, request, redirect, url_for, session, f
 from werkzeug.utils import secure_filename
 from models import db, User, Entry, Edition
 from services import generate_newspaper_articles
-
+# dd
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'haru-secret-key-15yr-cto'
 # 현재 파일(app.py)이 있는 위치의 절대 경로를 계산하여 DB 연결
