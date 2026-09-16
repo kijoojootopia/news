@@ -1,0 +1,30 @@
+# 1. 가상환경 (팀원마다 venv, .venv 등 이름이 달라도 모두 무시)
+venv/
+.venv/
+env/
+.env_*/
+*_env/
+
+# 2. 보안 및 환경 변수 파일
+.env
+.env.local
+
+# 3. 데이터베이스 (app.py 기준 생성되는 로컬 DB)
+haru_news.db
+*.sqlite3
+*.db
+
+# 4. 사용자 업로드 파일 (업로드 폴더 자체는 남기되 내부 파일은 제외)
+static/uploads/*
+!static/uploads/.gitkeep
+
+# 5. 파이썬 캐시 파일
+__pycache__/
+*.py[cod]
+*$py.class
+
+# 6. OS 및 IDE 설정 파일
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
