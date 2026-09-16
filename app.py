@@ -1,14 +1,20 @@
 import os
 import json
 from datetime import datetime
+from dotenv import load_dotenv
 from flask import Flask, render_template, request, redirect, url_for, session, flash, jsonify
 from werkzeug.utils import secure_filename
 from models import db, User, Entry, Edition
 from services import generate_newspaper_articles
 
+# .env 파일에서 환경 변수 로드
+load_dotenv()
+
 app = Flask(__name__)
-app.config['SECRET_KEY'] = 'haru-secret-key-15yr-cto'
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///haru_news.db'
+
+# 환경 변수로부터 설정값 로드 (미설정 시 기본값 적용)
+app.config['SECRET_KEY'] = os.getenv('SECRET_KEY', 'haru-secret-key-15yr-cto')
+app.config['SQLALCHEMY_DATABASE_URI'] = os.getenv('DATABASE_URL', 'sqlite:///haru_news.db')
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 app.config['UPLOAD_FOLDER'] = os.path.join(app.root_path, 'static', 'uploads')
 app.config['MAX_CONTENT_LENGTH'] = 16 * 1024 * 1024
@@ -158,4 +164,6 @@ def view_newspaper(edition_id):
     return render_template('newspaper.html', user=user, edition=edition, data=edition.get_data(), highlight=highlight_entry)
 
 if __name__ == '__main__':
-    app.run(debug=True, port=5000)
+    debug_mode = os.getenv('DEBUG', 'True').lower() in ('true', '1', 't')
+    port = int(os.getenv('PORT', 5000))
+    app.run(debug=debug_mode, port=port)
