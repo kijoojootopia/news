@@ -7,24 +7,17 @@ from werkzeug.utils import secure_filename
 from models import db, User, Entry, Edition
 from services import generate_newspaper_articles
 
-# dd
-
-
-# .env 파일에서 환경 변수 로드
+# 환경 변수 로드
 load_dotenv()
 
 app = Flask(__name__)
 
-app.config['SECRET_KEY'] = 'haru-secret-key-15yr-cto'
-# 현재 파일(app.py)이 있는 위치의 절대 경로를 계산하여 DB 연결
+# Render 리눅스 환경에서도 안전하게 동작하도록 SQLite 절대 경로 설정
 basedir = os.path.abspath(os.path.dirname(__file__))
-app.config['SQLALCHEMY_DATABASE_URI'] = f"sqlite:///{os.path.join(basedir, 'haru_news.db')}"
-=======
+db_path = os.path.join(basedir, 'haru_news.db')
 
-# 환경 변수로부터 설정값 로드 (미설정 시 기본값 적용)
 app.config['SECRET_KEY'] = os.getenv('SECRET_KEY', 'haru-secret-key-15yr-cto')
-app.config['SQLALCHEMY_DATABASE_URI'] = os.getenv('DATABASE_URL', 'sqlite:///haru_news.db')
-main
+app.config['SQLALCHEMY_DATABASE_URI'] = os.getenv('DATABASE_URL', f'sqlite:///{db_path}')
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 app.config['UPLOAD_FOLDER'] = os.path.join(app.root_path, 'static', 'uploads')
 app.config['MAX_CONTENT_LENGTH'] = 16 * 1024 * 1024
