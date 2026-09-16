@@ -4,7 +4,7 @@ import os
 from getpass import getpass
 from app import create_app
 
-# 아 진짜 귀엽다 고양이 미쳣당
+# 아 진짜 귀엽다 고양이 미쳣당 안녕 여러분 이게 진짜 중요함
 def main():
     try:
         api_key = getpass("OpenAI API 키를 입력하세요 (Enter: 데모 모드): ").strip()
