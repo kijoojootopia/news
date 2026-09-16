@@ -1,9 +1,1 @@
-dasdasjdbkasdhbahbd
-dasd
-asserta
-das
-delattrsda
-das
-das
-das
-delattr
+# 다시 한번 테스트
