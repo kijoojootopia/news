@@ -7,11 +7,15 @@ from werkzeug.utils import secure_filename
 from models import db, User, Entry, Edition
 from services import generate_newspaper_articles
 
+# dd
+
+
 # .env 파일에서 환경 변수 로드
 load_dotenv()
 
+ c7754a999f505905d98a7cc70c35f95ca23b0da1
 app = Flask(__name__)
- heejoo
+
 app.config['SECRET_KEY'] = 'haru-secret-key-15yr-cto'
 # 현재 파일(app.py)이 있는 위치의 절대 경로를 계산하여 DB 연결
 basedir = os.path.abspath(os.path.dirname(__file__))
