@@ -8,7 +8,9 @@ from services import generate_newspaper_articles
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'haru-secret-key-15yr-cto'
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///haru_news.db'
+# 현재 파일(app.py)이 있는 위치의 절대 경로를 계산하여 DB 연결
+basedir = os.path.abspath(os.path.dirname(__file__))
+app.config['SQLALCHEMY_DATABASE_URI'] = f"sqlite:///{os.path.join(basedir, 'haru_news.db')}"
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 app.config['UPLOAD_FOLDER'] = os.path.join(app.root_path, 'static', 'uploads')
 app.config['MAX_CONTENT_LENGTH'] = 16 * 1024 * 1024
