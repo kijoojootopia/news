@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>하루신문 — 나의 하루를 뉴스로</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html-to-image/1.11.11/html-to-image.min.js"></script>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body class="min-h-screen flex flex-col">
+    <header class="border-b border-[#E6DEC9] bg-[#FAF8F5]/80 backdrop-blur py-4 px-6 flex justify-between items-center">
+        <h1 class="font-cinzel text-xl font-bold tracking-wider text-[#3D3A35]">HARU NEWSPAPER</h1>
+        {% if session.get('user_id') %}
+            <div class="flex items-center gap-4 text-sm">
+                <a href="{{ url_for('dashboard') }}" class="text-[#7A746B] hover:text-black">오늘의 조각 담기</a>
+                <a href="{{ url_for('logout') }}" class="text-[#D96B6B] hover:underline">로그아웃</a>
+            </div>
+        {% endif %}
+    </header>
+    <main class="flex-1">
+        {% block content %}{% endblock %}
+    </main>
+    <script src="{{ url_for('static', filename='js/story_export.js') }}"></script>
+</body>
+</html>
